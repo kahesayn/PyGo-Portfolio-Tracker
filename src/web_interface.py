@@ -10,6 +10,7 @@ from os import path
 import json
 import shlex
 import yfinance as yf
+import time
 
 
 def web_interface():
@@ -73,8 +74,19 @@ def web_interface():
     if page_selection == "Run Tests":
         run_tests()
 
+    if page_selection == "News":
+        show_news()
+
     show_sidebar(port_path, data)
 
+def show_news(data):
+    company_name = st.text_input("Please input company name:")
+    articles = get_google_finance_articles(company_name)
+    len(articles)
+    st.write(most_relevant_article['title'])
+    st.write(most_relevant_article['link'])
+    st.write(most_relevant_article['relevance'])
+    st.write(most_relevant_article['content'])
 
 def show_history(data):
     """Create and format a chart with operations history"""
