@@ -11,7 +11,7 @@ from os import path
 import json
 import shlex
 import yfinance as yf
-from newspaper import Article
+import newspaper as Article
 
 
 def web_interface():
