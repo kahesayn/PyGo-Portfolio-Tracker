@@ -1,3 +1,4 @@
+
 """Web Interface for building a stock portfolio."""
 
 import streamlit as st
@@ -10,7 +11,7 @@ from os import path
 import json
 import shlex
 import yfinance as yf
-import newspaper
+from newspaper import Article
 
 
 def web_interface():
@@ -81,14 +82,18 @@ def web_interface():
 
 def show_news(data):
     company_name = st.text_input("Please input company name:")
-    cnn_site = newspaper.build('http://cnn.com')
-    for article in cnn_site.articles(company_name):
-        print(article.url)
-    
+    company_articles = get_google_finance_articles('http://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/')
+    len(articles)
+    most_relevant_article = articles[0]
+
     st.write(most_relevant_article['title'])
     st.write(most_relevant_article['link'])
     st.write(most_relevant_article['relevance'])
     st.write(most_relevant_article['content'])
+
+    cnn_site = newspaper.build('company_articles')
+    for article in cnn_site.articles(company_name):
+        print(article.url)
 
 def show_history(data):
     """Create and format a chart with operations history"""
