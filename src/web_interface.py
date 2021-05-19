@@ -10,7 +10,7 @@ from os import path
 import json
 import shlex
 import yfinance as yf
-import time
+import newspaper
 
 
 def web_interface():
@@ -81,8 +81,10 @@ def web_interface():
 
 def show_news(data):
     company_name = st.text_input("Please input company name:")
-    articles = get_google_finance_articles(company_name)
-    len(articles)
+    cnn_site = newspaper.build('http://cnn.com')
+    for article in cnn_site.articles(company_name):
+        print(article.url)
+    
     st.write(most_relevant_article['title'])
     st.write(most_relevant_article['link'])
     st.write(most_relevant_article['relevance'])
