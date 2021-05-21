@@ -57,7 +57,7 @@ def web_interface():
     st.markdown(f"## {portfolio_name}:")
 
     page_selection = st.sidebar.selectbox("Please select a page", options=[
-                                          "Chart", "Graphs", "History", "Run Tests"])
+                                          "Chart", "Graphs", "News", "History", "Run Tests"])
 
     if st.button("refresh data"):
         refresh(port_path)
