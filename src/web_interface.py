@@ -57,7 +57,7 @@ def web_interface():
     st.markdown(f"## {portfolio_name}:")
 
     page_selection = st.sidebar.selectbox("Please select a page", options=[
-                                          "Chart", "Graphs", "News", "History", "Run Tests"])
+                                          "Chart", "Graphs", "History", "Run Tests", "News"])
 
     if st.button("refresh data"):
         refresh(port_path)
@@ -81,9 +81,9 @@ def web_interface():
     show_sidebar(port_path, data)
 
 def show_news(data):
+    """Shows company's recent and relevant news"""
     company_name = st.text_input("Please input company name:")
     company_articles = get_google_finance_articles('http://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/')
-    len(articles)
     most_relevant_article = articles[0]
 
     st.write(most_relevant_article['title'])
@@ -92,8 +92,10 @@ def show_news(data):
     st.write(most_relevant_article['content'])
 
     cnn_site = newspaper.build('company_articles')
+    article = Article(company_articles)
     for article in cnn_site.articles(company_name):
-        print(article.url)
+    article.summary 
+
 
 def show_history(data):
     """Create and format a chart with operations history"""
